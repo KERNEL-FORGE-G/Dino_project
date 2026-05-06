@@ -1,0 +1,24 @@
+{
+  "name": "dino_project",
+  "version": "1.0.0",
+  "description": "TP  de ict202 ayant pour but de refaire le jeu du dinosaure emblematique de google chrome en y ajoutant une touche personnel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KERNEL-FORGE-G/Dino_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KERNEL-FORGE-G/Dino_project/issues"
+  },
+  "homepage": "https://github.com/KERNEL-FORGE-G/Dino_project#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

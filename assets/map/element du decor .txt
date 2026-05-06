@@ -1,0 +1,5 @@
+voici les element du decor telque les plateforme et autres element:
+- pour les plateformes elles varient en  fonctionsdes zones donc le noms dun plateforme sera sous cette forme: zone_p.png (et si a la fin il y a des nombre cela ce suit donc p1 puis p2 puis p3 et aussi les plateforme commenceront toujours par p1 et se terminerons par p3 donc ont peut aligner plusieur p2 au milieu de ceux la
+)
+- les lifes : life1(coeur complet), life2(moitié de coeur), life3 (coeur vide)
+- les numbers pour l'affichages du score
