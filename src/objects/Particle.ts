@@ -1,4 +1,4 @@
-import { WeatherType } from "../types";
+import type { WeatherType } from "../types";
 
 export class Particle {
   x: number;

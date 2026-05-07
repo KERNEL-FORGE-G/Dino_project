@@ -24,3 +24,7 @@ WeatherManager.ts : récupération Open-Meteo toutes les 10min,
 
 Particle.ts : particules pluie et neige, position/vitesse influencée
   par le vent de WeatherManager
+
+  PARTIE 2
+
+  Je me suis charge des fichiers allant de 1 a 3 puis 8 a 9 comme donne dans le document technique du pole b et elise s'est charge des fichiers 4 a 7

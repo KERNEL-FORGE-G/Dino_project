@@ -1,4 +1,4 @@
-import { WeatherType } from "../types";
+import type { WeatherType } from "../types";
 
 export interface WeatherData {
     isRaining: boolean;
@@ -6,6 +6,7 @@ export interface WeatherData {
     city: string;
     temperature: number;
     type: WeatherType;
+    wind: number;
 }
 export class WeatherManager {
     private apiUrl = "https://api.open-meteo.com/v1/forecast";
@@ -15,6 +16,14 @@ export class WeatherManager {
     private city = "Paris";// on prend paris comme de reference de depart 
 
     private currentWeather: WeatherType = "Clear";
+    private weatherInfo: WeatherData = {
+        isRaining: false,
+        isNight: false,
+        city: "Paris",
+        temperature: 20,
+        type: "Clear",
+        wind: 5
+    };
 
     constructor() {
         this.initGeolocation();
@@ -23,6 +32,15 @@ export class WeatherManager {
     getWeatherType(): WeatherType {
         return this.currentWeather;
     }
+
+    async updateWeather(): Promise<void> {
+        this.weatherInfo = await this.getRealTimeWeather();
+    }
+
+    getWeatherInfo(): WeatherData {
+        return this.weatherInfo;
+    }
+
     private initGeolocation() {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -35,7 +53,7 @@ export class WeatherManager {
     async getRealTimeWeather(): Promise<WeatherData> {
         try {
             const response = await fetch(
-                `${this.apiUrl}?latitude=${this.lat}&longitude=${this.lon}&current=weather_code,is_day,temperature_2m`
+                `${this.apiUrl}?latitude=${this.lat}&longitude=${this.lon}&current=weather_code,is_day,temperature_2m,wind_speed_10m`
             );
             const data = await response.json();
 
@@ -58,7 +76,8 @@ export class WeatherManager {
                 isNight: isNight,
                 city: this.city,
                 temperature: data.current.temperature_2m,
-                type: this.currentWeather
+                type: this.currentWeather,
+                wind: data.current.wind_speed_10m || 5 // fallback wind speed
             };
         } catch (error) {
             console.error("Erreur météo:", error);
@@ -68,7 +87,9 @@ export class WeatherManager {
                 isRaining: false,
                 isNight: hour < 6 || hour > 20,
                 city: "Local (Offline)",
-                temperature: 20
+                temperature: 20,
+                type: "Clear",
+                wind: 5
             };
         }
     }

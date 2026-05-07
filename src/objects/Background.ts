@@ -126,7 +126,9 @@ export class Background {
     }
 
     const frame = this.feet[zone][this.footFrame % this.feet[zone].length];
-    this.ctx.drawImage(frame, this.scrollX, H * 0.75, W, H * 0.25);
-    this.ctx.drawImage(frame, this.scrollX + W, H * 0.75, W, H * 0.25);
+    if (frame) {
+      this.ctx.drawImage(frame, this.scrollX, H * 0.75, W, H * 0.25);
+      this.ctx.drawImage(frame, this.scrollX + W, H * 0.75, W, H * 0.25);
+    }
   }
 }

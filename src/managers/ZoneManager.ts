@@ -1,4 +1,4 @@
-import { ZoneType } from "../types";
+import type { ZoneType } from "../types";
 
 export class ZoneManager {
   private zone: ZoneType = "Day";
