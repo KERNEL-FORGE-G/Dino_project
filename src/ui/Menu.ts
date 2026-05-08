@@ -1,11 +1,10 @@
 export class Menu {
   private container: HTMLDivElement;
   private onStartCallback: () => void;
-  private onToggleTheme: () => void;
+  private onToggleTheme!: () => void;  
 
-  constructor(onStart: () => void, onToggleTheme: () => void) {
+  constructor(onStart: () => void,onToggleTheme: () => void) {
     this.onStartCallback = onStart;
-    this.onToggleTheme = onToggleTheme;
     
     // Création du menu UI
     this.container = document.createElement("div");
@@ -43,30 +42,29 @@ export class Menu {
 
     this.container.appendChild(button);
 
+    const themeButton = document.createElement("button");
+
+  themeButton.innerText = "🌙 Mode Nuit";
+
+  themeButton.style.padding = "10px";
+  themeButton.style.fontSize = "20px";
+  themeButton.style.cursor = "pointer";
+
+  themeButton.onclick = () => {
+    this.onToggleTheme();
+  };
+
+this.container.appendChild(themeButton);
+
     document.body.appendChild(this.container);
 
   }
 
+    show() {
+  this.container.style.display = "flex";
+}
   hide() {
     this.container.style.display = "none";
-  }
-  
-    show() {
-  
-    this.container.style.display = "flex";
-
-    const themeButton = document.createElement("button");
-
-    themeButton.innerText = "🌙 Mode Nuit";
-
-    themeButton.style.padding = "10px";
-    themeButton.style.fontSize = "20px";
-    themeButton.style.cursor = "pointer";
-
-    themeButton.onclick = () => {
-      this.onToggleTheme();
-    };
-    this.container.appendChild(themeButton);
   }
 
 }

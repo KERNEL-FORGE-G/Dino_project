@@ -40,7 +40,7 @@ export class Game {
     this.ctx = context;
 
     // Menu connecté au jeu
-    this.menu = new Menu(() => this.startGame(),() => this.toggleTheme());
+    this.menu = new Menu(() => this.startGame(), () => this.toggleTheme());
 
     this.leaderboard = new LeaderboardManager();
 
@@ -59,11 +59,26 @@ export class Game {
       4,
       "blue"
     )
-  );
+    );
+this.canvas.addEventListener("click", (event) => {
+  const rect = this.canvas.getBoundingClientRect();
+
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  if (
+    mouseX >= 820 &&
+    mouseX <= 970 &&
+    mouseY >= 20 &&
+    mouseY <= 70
+  ) {
+    this.toggleTheme();
   }
-  }
-  start() {
-    this.menu.show();
+});
+
+
+}
+
   }
 
   startGame() {
@@ -105,11 +120,6 @@ export class Game {
     highScore
   );
 
-  // TEST TEMPORAIRE GAME OVER
-  // enlever plus tard
-  if (this.score >= 500) {
-    this.gameOver();
-  }
 
   for (const particle of this.particles) {
   particle.update(this.canvas.height);
@@ -117,13 +127,8 @@ export class Game {
 }
 
  render() {
-  // nettoyer canvas
-  this.ctx.clearRect(
-    0,
-    0,
-    this.canvas.width,
-    this.canvas.height
-  );
+  this.ctx.fillStyle = this.isNightMode ? "#111" : "#87CEEB";
+  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
   // dessiner particules
   for (const particle of this.particles) {
@@ -131,19 +136,18 @@ export class Game {
   }
 
   // texte jeu
-  this.ctx.fillStyle = this.isNightMode
-  ? "#111"
-  : "#87CEEB";
-  this.ctx.fillStyle = this.isNightMode
+this.ctx.fillStyle = this.isNightMode
   ? "white"
   : "black";
-  this.ctx.font = "40px Arial";
+
+this.ctx.font = "40px Arial";
 
   this.ctx.fillText(
     "Dino Project Running...",
     300,
     250
   );
+
 }
 gameOver() {
   this.isRunning = false;
@@ -155,5 +159,6 @@ gameOver() {
 
 toggleTheme() {
   this.isNightMode = !this.isNightMode;
-  }
+  console.log("Theme changé :", this.isNightMode);
+}
 }
