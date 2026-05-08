@@ -9,7 +9,7 @@ export class ScoreDisplay {
     public draw(ctx: CanvasRenderingContext2D, canvasWidth: number, score: number, highScore: number, lives: number): void {
         this.x = canvasWidth - 150; // Positionnement à droite
 
-        // 1. Affichage du score actuel [cite: 54]
+        // 1. Affichage du score actuel
         ctx.fillStyle = 'white';
         ctx.font = '20px "Courier New"'; // Utilisation d'une belle police
         ctx.textAlign = 'left';
@@ -19,7 +19,7 @@ export class ScoreDisplay {
         ctx.font = '16px "Courier New"';
         ctx.fillText(`HI: ${highScore.toString().padStart(5, '0')}`, this.x, this.y + 25);
 
-        // 3. Affichage des vies restantes [cite: 57, 60]
+        // 3. Affichage des vies restantes
         // On dessine un petit texte ou on prépare l'emplacement pour les icônes life1.png
         ctx.fillText(`Vies: ${'❤️'.repeat(lives)}`, this.x, this.y + 50);
     }

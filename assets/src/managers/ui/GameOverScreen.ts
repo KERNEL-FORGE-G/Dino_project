@@ -1,4 +1,4 @@
-import { AudioManager } from '../managers/AudioManager';
+import { AudioManager } from '../AudioManager';
 
 export class GameOverScreen {
     private audioManager: AudioManager;
@@ -11,7 +11,7 @@ export class GameOverScreen {
      * Affiche l'écran de Game Over
      */
     public show(ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, finalScore: number, highScore: number): void {
-        // Jouer le son de défaite [cite: 50]
+        // Jouer le son de défaite
         this.audioManager.play('die');
 
         // Fond sombre transparent pour laisser voir le jeu derrière

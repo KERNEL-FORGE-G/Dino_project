@@ -1,4 +1,4 @@
-import { AudioManager } from '../managers/AudioManager';
+import { AudioManager } from '../AudioManager';
 
 export class Menu {
     private audioManager: AudioManager;
@@ -21,11 +21,11 @@ export class Menu {
         ctx.textAlign = 'center';
         ctx.fillText("DINE PROJECT", canvasWidth / 2, canvasHeight / 2 - 50);
 
-        // Afficher le meilleur score [cite: 42]
+        // Afficher le meilleur score
         ctx.font = '20px Arial';
         ctx.fillText(`Meilleur Score: ${highScore}`, canvasWidth / 2, canvasHeight / 2);
 
-        // Dessiner un bouton "Jouer" coloré [cite: 42, 45]
+        // Dessiner un bouton "Jouer"
         ctx.fillStyle = '#ff4757';
         ctx.fillRect(canvasWidth / 2 - 50, canvasHeight / 2 + 30, 100, 40);
         ctx.fillStyle = 'white';
@@ -36,11 +36,11 @@ export class Menu {
      * Cette méthode doit être appelée quand l'utilisateur clique sur le bouton Jouer
      */
     public handlePlayClick(): void {
-        // RÈGLE D'OR : On débloque le son au moment du clic [cite: 43, 71]
+        // RÈGLE D'OR : On débloque le son au moment du clic
         this.audioManager.unlock();
-        this.audioManager.play('select'); // Joue le son de sélection [cite: 27, 28]
+        this.audioManager.play('select'); // Joue le son de sélection
         
         console.log("Le jeu commence et l'audio est activé !");
-        // Ici, on émettra plus tard un signal pour dire au Pôle A de lancer le jeu [cite: 44]
+        // Ici, on émettra plus tard un signal pour dire au Pôle A de lancer le jeu
     }
 }
