@@ -4,6 +4,7 @@
   "description": "TP  de ict202 ayant pour but de refaire le jeu du dinosaure emblematique de google chrome en y ajoutant une touche personnel",
   "main": "index.js",
   "scripts": {
+    "start": "npx serve .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
