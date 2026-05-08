@@ -1,10 +1,12 @@
 export class Menu {
   private container: HTMLDivElement;
   private onStartCallback: () => void;
+  private onToggleTheme: () => void;
 
-  constructor(onStart: () => void) {
+  constructor(onStart: () => void, onToggleTheme: () => void) {
     this.onStartCallback = onStart;
-
+    this.onToggleTheme = onToggleTheme;
+    
     // Création du menu UI
     this.container = document.createElement("div");
     this.container.style.position = "absolute";
@@ -25,6 +27,7 @@ export class Menu {
     const title = document.createElement("h1");
     title.innerText = "DINO PROJECT";
     this.container.appendChild(title);
+    
 
     // Bouton jouer
     const button = document.createElement("button");
@@ -41,13 +44,29 @@ export class Menu {
     this.container.appendChild(button);
 
     document.body.appendChild(this.container);
-  }
 
-  show() {
-    this.container.style.display = "flex";
   }
 
   hide() {
     this.container.style.display = "none";
   }
+  
+    show() {
+  
+    this.container.style.display = "flex";
+
+    const themeButton = document.createElement("button");
+
+    themeButton.innerText = "🌙 Mode Nuit";
+
+    themeButton.style.padding = "10px";
+    themeButton.style.fontSize = "20px";
+    themeButton.style.cursor = "pointer";
+
+    themeButton.onclick = () => {
+      this.onToggleTheme();
+    };
+    this.container.appendChild(themeButton);
+  }
+
 }

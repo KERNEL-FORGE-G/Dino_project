@@ -14,6 +14,7 @@ export class Game {
   private scoreDisplay: ScoreDisplay;
   private isRunning: boolean = false;
   private particles: Particle[] = [];
+  private isNightMode: boolean;
 
   constructor() {
     // Canvas
@@ -28,6 +29,7 @@ export class Game {
     this.canvas.width = 1000;
     this.canvas.height = 500;
     this.scoreDisplay = new ScoreDisplay();
+    this.isNightMode = false;
 
     const context = this.canvas.getContext("2d");
 
@@ -38,7 +40,7 @@ export class Game {
     this.ctx = context;
 
     // Menu connecté au jeu
-    this.menu = new Menu(() => this.startGame());
+    this.menu = new Menu(() => this.startGame(),() => this.toggleTheme());
 
     this.leaderboard = new LeaderboardManager();
 
@@ -58,9 +60,8 @@ export class Game {
       "blue"
     )
   );
-}
   }
-
+  }
   start() {
     this.menu.show();
   }
@@ -71,6 +72,11 @@ export class Game {
     this.loop();
     this.score = 0;
     this.scoreDisplay.show();
+   
+  }
+
+  setNightMode(value: boolean) {
+  this.isNightMode = value;
   }
 
   loop() {
@@ -125,7 +131,12 @@ export class Game {
   }
 
   // texte jeu
-  this.ctx.fillStyle = "black";
+  this.ctx.fillStyle = this.isNightMode
+  ? "#111"
+  : "#87CEEB";
+  this.ctx.fillStyle = this.isNightMode
+  ? "white"
+  : "black";
   this.ctx.font = "40px Arial";
 
   this.ctx.fillText(
@@ -141,4 +152,8 @@ gameOver() {
 
   this.gameOverScreen.show(this.score);
 }
+
+toggleTheme() {
+  this.isNightMode = !this.isNightMode;
+  }
 }
