@@ -1,0 +1,5 @@
+voici comment ici ce presente chque type de backgound est pour une zone et le backgorund est diviser en 3 partie:
+-celle de bas foot
+-celle du haut head
+-celle du milieu body
+et dans le cas ou le nom se terminie part 1 nombre cela passe au suvant (si on est dans la zone orange et il y a 2 foot alors on aura les agencement foot1 puis foot 2 puis foot 1 ainsi de suite  et de meme pour les autres parties)

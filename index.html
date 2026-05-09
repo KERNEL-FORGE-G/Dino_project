@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Dyno Game - Projet Étudiant</title>
+    <link rel="stylesheet" href="game/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="game-container">
+        <!-- Barre de contrôles en haut à droite -->
+        <div id="control-bar">
+            <button id="toggle-time" title="Changer jour/nuit">🌓</button>
+            <button id="cycle-weather" title="Changer météo">🌦️</button>
+            <button id="pause-btn" title="Pause">⏸</button>
+            <button id="restart-game" title="Recommencer">🔄</button>
+        </div>
+
+        <div id="start-menu">
+            <h1>DYNO GAME</h1>
+            <div id="avatar-selection">
+                <h3>Choisissez votre avatar</h3>
+                <div class="avatar-list">
+                    <div class="avatar-item selected" data-id="dino">
+                        <img src="assets/personnages/Dino/dino_idle.png" alt="Dino">
+                        <span>Dino</span>
+                    </div>
+                    <div class="avatar-item" data-id="player">
+                        <img src="assets/personnages/Player/player_idle.png" alt="Player">
+                        <span>Joueur</span>
+                    </div>
+                    <div class="avatar-item" data-id="robot_blue">
+                        <img src="assets/personnages/robot/robot_blueDrive1.png" alt="Robot">
+                        <span>Robot</span>
+                    </div>
+                    <div class="avatar-item" data-id="character_pink">
+                        <img src="assets/personnages/Default/character_pink_idle.png" alt="Rose">
+                        <span>Rose</span>
+                    </div>
+                </div>
+            </div>
+            <button id="start-btn">Commencer le jeu</button>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="game-over" style="display: none;">
+            <h1>GAME OVER</h1>
+            <button id="restart-btn-gameover">Recommencer</button>
+            <button id="menu-btn-gameover">Menu Principal</button>
+        </div>
+
+        <div id="pause-menu" style="display: none;">
+            <h1>PAUSE</h1>
+            <button id="pause-resume-btn">Reprendre</button>
+            <button id="pause-restart-btn">Recommencer</button>
+            <button id="pause-mute-btn">🔊 Couper le son</button>
+            <button id="pause-menu-btn">Menu Principal</button>
+        </div>
+    </div>
+    <!-- cette zone nous sert à charger le script principal -->
+    <script type="module" src="game/Game.ts"></script>
+  </body>
+</html>

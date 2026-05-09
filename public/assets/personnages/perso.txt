@@ -1,0 +1,1 @@
+ici seront conserver les sprites des perso jouables qui s'afficheront sur la liste des persos
